@@ -1,0 +1,13 @@
+{
+    "require":{
+        "php":">=5.4.0",
+        "tonynasta/phpbase":"dev-master",
+        "smarty/smarty": "dev-trunk"
+    },
+    "repositories":[
+        {
+            "type":"git",
+            "url": "http://github.com/tonynasta/phpbase"
+        }
+    ]
+}

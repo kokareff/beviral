@@ -1,0 +1,19 @@
+{
+    "name": "tonynasta/phpbase",
+    "description": "Quickstart framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anton Permyakov",
+            "email": "mynameistony@yandex.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpBase\\": "lib/"
+        }
+    }
+}

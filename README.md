@@ -1,4 +1,1 @@
-beviral
-=======
-
-Crazy and dirty
+New Qupa implementation
