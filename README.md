@@ -1,1 +1,1 @@
-New Qupa implementation
+Be seed

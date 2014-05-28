@@ -75,7 +75,7 @@ class SmartyBC extends Smarty
      *
      * @param string  $tpl_var the template variable name
      * @param mixed   &$value  the referenced value to append
-     * @param boolean $merge   flag if array elementsHover shall be merged
+     * @param boolean $merge   flag if array elements shall be merged
      */
     public function append_by_ref($tpl_var, &$value, $merge = false)
     {

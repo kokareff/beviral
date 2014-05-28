@@ -244,14 +244,14 @@ class _smarty_dq_content extends _smarty_parsetree
 class _smarty_template_buffer extends _smarty_parsetree
 {
     /**
-     * Array of template elementsHover
+     * Array of template elements
      *
      * @var array
      */
     public $subtrees = Array();
 
     /**
-     * Create root of parse tree for template elementsHover
+     * Create root of parse tree for template elements
      *
      * @param object $parser parse object
      */

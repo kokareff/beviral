@@ -38,6 +38,16 @@ class DbModelTest extends PHPUnit_Framework_TestCase
     }
 
 
+    public function testIsset()
+    {
+        $model = new DbModelStub($this->db, ['id' => 1, 'bar' => 'baz']);
+
+        $this->assertEquals(true, $model->exists('id'));
+        $this->assertEquals(true, isset($model->id));
+        $this->assertEquals(false, isset($model->nonexist));
+        $this->assertEquals(false, empty($model->bar));
+    }
+
 
     public function testStaticMethods()
     {

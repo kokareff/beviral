@@ -118,7 +118,7 @@ class Request
 
 
     /**
-     * Возвращает user-Agent
+     * Возвращает User-Agent
      *
      * @return string
      */

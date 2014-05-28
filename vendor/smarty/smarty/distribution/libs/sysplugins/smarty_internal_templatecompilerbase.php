@@ -242,7 +242,7 @@ abstract class Smarty_Internal_TemplateCompilerBase
             $this->sources = array_reverse($template->source->components);
         }
         $loop = 0;
-        // the $this->sources array can get additional elementsHover while compiling by the {extends} tag
+        // the $this->sources array can get additional elements while compiling by the {extends} tag
         while ($this->template->source = array_shift($this->sources)) {
             $this->smarty->_current_file = $this->template->source->filepath;
             if ($this->smarty->debugging) {

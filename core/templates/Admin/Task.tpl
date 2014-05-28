@@ -47,7 +47,8 @@
                 </td>
                 <td>{$task.progress}</td>
                 <td>
-                    <a class="btn btn-danger send_act" href="/admin/task/del?taskId={$task._id}"><i class="icon-remove"></i> Удалить</a>
+                    <a class="btn btn-warning" href="/admin/task/log?taskId={$task._id}"><i class="fa fa-check"></i> Логи</a>
+                    <a class="btn btn-danger send_act" href="/admin/task/del?taskId={$task._id}"><i class="fa fa-ban"></i> Удалить</a>
                 </td>
             </tr>
         {/foreach}

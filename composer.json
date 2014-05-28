@@ -2,12 +2,18 @@
     "require":{
         "php":">=5.4.0",
         "tonynasta/phpbase":"dev-master",
-        "smarty/smarty": "dev-trunk"
+        "smarty/smarty": "dev-trunk",
+        "react/react": "0.4.*",
+        "phpseclib/phpseclib": "dev-master"
     },
     "repositories":[
         {
             "type":"git",
             "url": "http://github.com/tonynasta/phpbase"
+        },
+        {
+            "type":"git",
+            "url": "http://github.com/phpseclib/phpseclib"
         }
     ]
 }

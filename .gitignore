@@ -1,6 +1,5 @@
 .idea/
+vendor/
 vendor/smarty/smarty/.svn/
 vendor/smarty/smarty/documentation/ru/programmers/api-functions/api-register-postfilter.xml
 templates_compile/
-vendor/smarty/smarty/development/
-vendor/smarty/smarty/documentation/

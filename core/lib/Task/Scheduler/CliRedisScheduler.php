@@ -1,6 +1,7 @@
 <?php
 namespace Zotto\Scheduler;
-use PhpBase\Config\Files;
+use Zotto\Config\Files;
+use Zotto\Task\Scheduler\Scheduler;
 
 /**
  * Created by crmMaster.
@@ -10,7 +11,7 @@ use PhpBase\Config\Files;
 class CliRedisScheduler extends Scheduler
 {
 
-    protected $_maxWorkersCount = 16;
+    protected $maxWorkersCount = 16;
     protected $_redis = null;
 
     const NAME_TASK_INFO = 'taskInfo';
@@ -63,12 +64,8 @@ class CliRedisScheduler extends Scheduler
         self::execInBackground($cmd);
     }
 
-    public static function execInBackground($cmd)
+    public function getCurrentTasksCount()
     {
-        if (substr(php_uname(), 0, 7) == "Windows") {
-            pclose(popen("start /B " . $cmd, "r"));
-        } else {
-            exec($cmd . " > /dev/null &");
-        }
+        return count($this->getTaskListName(self::TASK_STATUS_STARTED));
     }
 }

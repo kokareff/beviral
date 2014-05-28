@@ -72,6 +72,18 @@ abstract class Model
         return;
     }
 
+    /**
+     * Магический метод проверки свойства
+     *
+     * @param string $key Ключ
+     * @return void
+     */
+    public function __isset($key)
+    {
+        return $this->exists($key);
+    }
+
+
 
     /**
      * Возвращает свойство модели
@@ -110,21 +122,34 @@ abstract class Model
 
 
     /**
+     * Проверяет свойство модели
+     *
+     * @param string $key Ключ
+     * @return void
+     */
+    public function exists($key)
+    {
+        return isset(static::$_defaults[$key]);
+    }
+
+
+    /**
      * Создает или обновляет запись модели
      *
-     * @return void
+     * @return \PDOStatement
      */
     public function save()
     {
         if ($this->id > 0) {
-            $this->_db->update(
+            $statement = $this->_db->update(
                 static::$_table, ['id' => $this->id], $this->_data
             );
         } else {
             $this->id = null;
-            $this->_db->insert(static::$_table, $this->_data);
+            $statement = $this->_db->insert(static::$_table, $this->_data);
             $this->id = $this->_db->getInsertId();
         }
+        return $statement;
     }
 
 

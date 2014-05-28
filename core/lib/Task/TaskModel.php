@@ -11,7 +11,7 @@ class TaskModel
     protected static  $_config;
     public function __construct()
     {
-        self::$_config = (new \PhpBase\Config\Files(CORE_CONFIG))->get('tasks');
+        self::$_config = (new \Zotto\Config\Files(CORE_CONFIG))->get('tasks');
     }
 
     public function getAllowedTasks()
@@ -39,7 +39,7 @@ class TaskModel
 
     public static function isAvailable($taskName)
     {
-        self::$_config = (new \PhpBase\Config\Files(CORE_CONFIG))->get('tasks');
+        self::$_config = (new \Zotto\Config\Files(CORE_CONFIG))->get('tasks');
         return file_exists(self::$_config['dir'] . $taskName . '.php');
     }
-} 
+}

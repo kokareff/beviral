@@ -218,6 +218,4 @@ class SmartArray implements \ArrayAccess, \Iterator
     {
         return $this->_array;
     }
-
-
 }

@@ -112,12 +112,15 @@ function generateFormFields(data){
          html+='<label>'+data[key]['label']+'</label>'
       }
       if(data[key]['options']){
-         html+='<select class="form-control" name="params['+key+']">';
-         for (var val in data[key]['options']){
-            html+='<option value="'+val+'">'+data[key]['options'][val]+'</option>'
-         }
-         html+='</select>';
-      }
+           html+='<select class="form-control" name="params['+key+']">';
+           for (var val in data[key]['options']){
+               html+='<option value="'+val+'">'+data[key]['options'][val]+'</option>'
+           }
+           html+='</select>';
+       }
+       if(data[key]['input']){
+           html+='<input type="text" class="form-control" name="params['+key+']"/>';
+       }
    }
    return html+"</div>";
 }

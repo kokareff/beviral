@@ -6,4 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'System' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
+    'React\\Promise' => array($vendorDir . '/react/promise/src'),
+    'Net' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
+    'Math' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
+    'Guzzle\\Parser' => array($vendorDir . '/guzzle/parser'),
+    'File' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
+    'Evenement' => array($vendorDir . '/evenement/evenement/src'),
+    'Crypt' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
 );

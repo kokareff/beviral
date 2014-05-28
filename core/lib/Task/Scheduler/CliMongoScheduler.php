@@ -1,6 +1,8 @@
 <?php
 namespace Zotto\Task\Scheduler;
-use PhpBase\Config\Files;
+use Zotto\Config\Files;
+use Zotto\Db\QupaCacheCollectionAdapter;
+use Zotto\Db\MainCollectionAdapter;
 
 /**
  * Created by crmMaster.
@@ -9,7 +11,7 @@ use PhpBase\Config\Files;
 
 class CliMongoScheduler extends Scheduler {
 
-   protected $maxWorkersCount = 4;
+   protected $maxWorkersCount = 2;
    protected $idFieldName = '_id';
 
    public function getCurrentTasks($status = array(self::TASK_STATUS_STARTED), $limit = null, $offset = null) {
@@ -57,24 +59,13 @@ class CliMongoScheduler extends Scheduler {
       };
    }
 
-   public static function execInBackground($cmd) {
-      if (substr(php_uname(), 0, 7) == "Windows") {
-          $handler =  popen("start /B " . $cmd, "r");
-          if(!$handler){
-            return false;
-          } else {
-              pclose(
-                $handler
-              );
-          }
-
-      }
-      else {
-         exec($cmd . " > /dev/null &");
-      }
-   }
+    public function getCurrentTasksCount()
+    {
+        $sm = new SchedulerCol();
+        return $sm->findBy('status', self::TASK_STATUS_STARTED)->count();
+    }
 }
 
-class SchedulerCol extends \Zotto\Db\CollectionAdapter {
+class SchedulerCol extends MainCollectionAdapter {
     protected $collectionName = 'scheduler';
 }

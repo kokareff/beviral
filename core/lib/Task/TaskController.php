@@ -40,9 +40,7 @@ class TaskController {
       }
 
        $params = $request->post->get('params', null);
-      if(empty($params)){
-         $errors['taskParams']='Не установлены параметры';
-      }
+
 
       if (empty($errors)) {
          $sheduler = new CliMongoScheduler();

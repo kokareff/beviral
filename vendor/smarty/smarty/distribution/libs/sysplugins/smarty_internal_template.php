@@ -557,7 +557,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
      * [util function] counts an array, arrayaccess/traversable or PDOStatement object
      *
      * @param  mixed $value
-     * @return int   the count for arrays and objects that implement countable, 1 for other objects that don't, and 0 for empty elementsHover
+     * @return int   the count for arrays and objects that implement countable, 1 for other objects that don't, and 0 for empty elements
      */
     public function _count($value)
     {

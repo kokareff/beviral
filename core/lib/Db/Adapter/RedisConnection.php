@@ -2,7 +2,8 @@
 
 namespace Zotto\Db\Adapter;
 
-use PhpBase\Config\Files;
+
+use Zotto\Config\Files;
 
 abstract class RedisConnection
 {

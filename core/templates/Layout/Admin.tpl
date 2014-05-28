@@ -6,14 +6,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{block name="title"}Qupa admin{/block}</title>
+    <title>{block name="title"}DMP admin{/block}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
     <link href="/css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
 </head>
 <body>
@@ -30,15 +30,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Qupa</a>
+            <a class="navbar-brand" href="index.html">DMP admin</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-             <!--   <li {SmartyHelpers::setActive('admin')}><a href="/api/admin"><i class="fa fa-dashboard"></i> Дашбоард</a></li>
-                <li {SmartyHelpers::setActive('show-stat')}><a href="/api/show-stat"><i class="fa fa-bar-chart-o"></i> Статистика</a></li> -->
+
                 <li {SmartyHelpers::setActive('task')}><a href="/admin/task"><i class="fa fa-edit"></i> Фоновые задачи</a></li>
+                <li {SmartyHelpers::setActive('droplet')}><a href="/admin/droplet"><i class="fa fa-edit"></i> Дроплеты DO</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bar-chart-o"></i> Статистика <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li {SmartyHelpers::setActive('domain-stat')}><a href="/stat/domain-stat"><i class="fa fa-bar-chart-o"></i> Посещаемость сайтов</a></li>
+                    </ul>
+                </li>
+
               <!--  <li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
                 <li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>
                 <li><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>

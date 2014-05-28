@@ -1,7 +1,7 @@
 <?php
 
 namespace Zotto\Templater;
-use PhpBase\Config\Files;
+use Zotto\Config\Files;
 use Smarty;
 require_once CORE_LIB.'SmartyHelpers.php';
 

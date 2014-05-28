@@ -5,6 +5,7 @@ namespace Zotto\Actions\Site;
 use PhpBase\Mvc\Request;
 use PhpBase\Mvc\Response;
 use Zotto\Actions\BaseAction;
+use Zotto\Actions\Factory;
 use Zotto\Model\ACLUserModel;
 use Zotto\Request\Api;
 use Zotto\Task\TaskController;
@@ -14,6 +15,8 @@ class User extends BaseAction
 {
     protected $_templateDir = 'Site';
 
+    protected $_mapper = ['action', 'acl'];
+    protected $allowRegister = ['rekl', 'wm'];
 
     /**
      * Выполняет действие
@@ -23,17 +26,7 @@ class User extends BaseAction
      */
     public function run(Api $request)
     {
-
-        $actionReturn = null;
-        if (isset($request->rawParams[0])) {
-            $actionReturn = $this->handleAction($request->rawParams[0], $request);
-        }
-
-        if (!$actionReturn) {
-            return $this->_renderToResponse('User',[]);
-        } else {
-            return $actionReturn;
-        }
+       return $this->_renderToResponse('User',[]);
     }
 
 
@@ -51,6 +44,7 @@ class User extends BaseAction
     }
 
     public function onCheckLogin($request){
+
         $errors = array();
 
         $nick = trim(htmlspecialchars($request->post->get('nick', '')));
@@ -73,12 +67,13 @@ class User extends BaseAction
             }
         }
 
-        return $this->_renderJsonData(['errors' => $errors]);
+        return $this->_renderJsonData(['errors' => $errors, 'location'=>'/']);
     }
 
     public function onRegister($request){
-        return $this->_renderToResponse('User.register',[]);
+        return $this->_renderToResponse('User.register',['acl'=>$request->params->get('acl', 'wm')]);
     }
+
 
     public function onCheckRegister($request){
         $errors = array();
@@ -109,12 +104,21 @@ class User extends BaseAction
             $errors['pass_confirm'] = 'Пароль и подтверждение не совпадают';
         }
 
+        $location = '';
         if(empty($errors)) {
             // register user
-            $um->register($nick, $pass);
+            $acl = $request->post->get('acl', 'wm');
+            if(in_array($acl, $this->allowRegister)){
+                $location='/'.$acl;
+                $acl = [Factory::generateCamelCaseName($acl)];
+            } else {
+                $acl = [];
+            }
+            $um->register($nick, $pass, $acl);
+            $um->auth($nick, $pass);
         }
 
-        return $this->_renderJsonData(["errors" => $errors]);
+        return $this->_renderJsonData(["errors" => $errors, "location"=>$location]);
     }
 
 

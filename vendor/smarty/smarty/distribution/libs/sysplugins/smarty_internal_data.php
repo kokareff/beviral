@@ -112,7 +112,7 @@ class Smarty_Internal_Data
      *
      * @param  array|string         $tpl_var the template variable name(s)
      * @param  mixed                $value   the value to append
-     * @param  boolean              $merge   flag if array elementsHover shall be merged
+     * @param  boolean              $merge   flag if array elements shall be merged
      * @param  boolean              $nocache if true any output of this variable will be not cached
      * @return Smarty_Internal_Data current Smarty_Internal_Data (or Smarty or Smarty_Internal_Template) instance for chaining
      */
@@ -173,7 +173,7 @@ class Smarty_Internal_Data
      *
      * @param  string               $tpl_var the template variable name
      * @param  mixed                &$value  the referenced value to append
-     * @param  boolean              $merge   flag if array elementsHover shall be merged
+     * @param  boolean              $merge   flag if array elements shall be merged
      * @return Smarty_Internal_Data current Smarty_Internal_Data (or Smarty or Smarty_Internal_Template) instance for chaining
      */
     public function appendByRef($tpl_var, &$value, $merge = false)

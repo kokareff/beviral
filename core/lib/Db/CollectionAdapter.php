@@ -1,31 +1,37 @@
 <?php
-
 namespace Zotto\Db;
-
-use Zotto\Db\Adapter\MonDB;
 
 class CollectionAdapter
 {
 
-    protected $collection = null;
+    /**
+     * @var \MongoCollection $collection
+     */
+    protected $collection;
     protected $collectionName;
 
-    public function __construct($collectionName = null, MonDB $mongo = null)
+    protected $mongo;
+
+    public function __construct($mongo=null, $collectionName = null )
     {
-        if ($mongo == null){
-            $mongo = MonDB::getInstance();
+        if($mongo===null){
+            $this->mongo = $this->getDefaultConnection();
+        }
+
+        if ($mongo instanceof \MongoDB){
+           $this->mongo = $mongo;
         }
 
         if ($collectionName !== null){
             $this->collectionName = $collectionName;
         }
 
-        $this->collection = $mongo->mongo->{$this->collectionName};
-        if (!$this->collection) {
-            $mongo->mongo->createCollection($this->collectionName);
-            $this->collection = $mongo->mongo->{$this->collectionName};
-        }
+        $this->collection =  $this->mongo->{$this->collectionName};
 
+    }
+
+    public function getDefaultConnection(){
+       throw new \Exception('abstract get default connection');
     }
 
     public function getCollection(){
@@ -43,7 +49,7 @@ class CollectionAdapter
 
 
     /**
-     * Get array containts all elementsHover of collection
+     * Get array containts all elements of collection
      * @return array
      */
     public function getAll()
@@ -102,7 +108,10 @@ class CollectionAdapter
     public function getOneBy($fields, $val = false)
     {
         if (is_array($fields)) {
-            return $this->collection->findOne($fields);
+            if($val===false){
+                $val=[];
+            }
+            return $this->collection->findOne($fields, $val);
         } else {
             return $this->collection->findOne(array($fields => $val));
         }

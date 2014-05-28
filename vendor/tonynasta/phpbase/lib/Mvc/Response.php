@@ -27,8 +27,7 @@ class Response
         303 => 'See Other',
         403 => 'Forbidden',
         404 => 'Not Found',
-        500 => 'Internal Server Error',
-        204 => 'No content'
+        500 => 'Internal Server Error'
     ];
 
     /**
